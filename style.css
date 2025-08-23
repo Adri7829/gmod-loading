@@ -1,0 +1,28 @@
+/* Reset rapide */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("background.jpg") no-repeat center center;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  width: 300px; /* tu peux ajuster la taille */
+  animation: fadein 2s ease-in-out;
+}
+
+/* Animation simple pour faire apparaître le logo */
+@keyframes fadein {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
