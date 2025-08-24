@@ -14,10 +14,22 @@ body {
   background: url("https://i.imgur.com/YH2ECY7.jpeg") no-repeat center center;
   background-size: cover;
   font-family: Arial, sans-serif;
+  position: relative; /* nécessaire pour l'overlay */
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* overlay pour assombrir l'image */
+  z-index: 0;
 }
 
 .loading-container {
   text-align: center;
+  position: relative; /* pour passer au-dessus de l'overlay */
+  z-index: 1;
 }
 
 /* Logo avec effet respiration */
@@ -29,8 +41,14 @@ body {
 }
 
 @keyframes breathe {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,255,255,0.7)); }
-  50% { transform: scale(1.1); filter: drop-shadow(0 0 20px rgba(255,255,255,1)); }
+  0%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.7)); 
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 20px rgba(255,255,255,1)); 
+  }
 }
 
 /* Texte sous le logo */
