@@ -14,47 +14,115 @@ body {
   background: url("https://i.imgur.com/yXaVR9w.jpeg") no-repeat center center;
   background-size: cover;
   font-family: Arial, sans-serif;
-  position: relative; /* nécessaire pour l'overlay */
+  position: relative;
   overflow: hidden;
 }
 
+/* Overlay sombre/rouge */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35); /* overlay pour assombrir l'image */
+  background: rgba(14, 13, 13, 0.4);
   z-index: 0;
 }
 
 .loading-container {
   text-align: center;
-  position: relative; /* pour passer au-dessus de l'overlay */
+  position: relative;
   z-index: 1;
+  animation: fadeIn 1s ease forwards;
 }
 
-/* Logo avec effet respiration */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo avec effet respiration rouge */
 .logo {
   width: 300px;
   animation: breathe 2s ease-in-out infinite;
   margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.7));
+  filter: drop-shadow(0 0 10px rgba(255,0,0,0.7));
 }
 
 @keyframes breathe {
   0%, 100% { 
     transform: scale(1); 
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.7)); 
+    filter: drop-shadow(0 0 10px rgba(255,0,0,0.7)); 
   }
   50% { 
     transform: scale(1.1); 
-    filter: drop-shadow(0 0 20px rgba(255,255,255,1)); 
+    filter: drop-shadow(0 0 20px rgba(255,0,0,1)); 
   }
 }
 
-/* Texte sous le logo */
+/* Texte principal sans glow */
 .loading-text {
-  color: #fff;
+  color: #ffffff;
   font-size: 20px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  text-shadow: none; /* plus de glow */
+  animation: none;    /* plus d'animation */
 }
 
+/* Spinner rouge qui tourne et respire */
+.spinner {
+  margin: 20px auto 0;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-inner {
+  width: 100%;
+  height: 100%;
+  border: 4px solid rgba(255,0,0,0.3);
+  border-top: 4px solid #ff0000;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Astuces défilantes en bas sans glow */
+.tip-text {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-style: italic;
+  text-shadow: none;  /* plus de glow */
+  overflow: hidden;
+  height: 1.2em;
+  z-index: 1;
+}
+
+.tip-text span {
+  display: block;
+  height: 1.2em;
+  animation: slideTips 40s linear infinite; /* 5 astuces x 8s = 40s */
+}
+
+@keyframes slideTips {
+  0% { transform: translateY(0); }
+  16% { transform: translateY(0); }
+  20% { transform: translateY(-100%); }
+  36% { transform: translateY(-100%); }
+  40% { transform: translateY(-200%); }
+  56% { transform: translateY(-200%); }
+  60% { transform: translateY(-300%); }
+  76% { transform: translateY(-300%); }
+  80% { transform: translateY(-400%); }
+  96% { transform: translateY(-400%); }
+  100% { transform: translateY(0); }
+}
