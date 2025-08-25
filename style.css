@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://i.imgur.com/YH2ECY7.jpeg") no-repeat center center;
+  background: url("https://i.imgur.com/yXaVR9w.jpeg") no-repeat center center;
   background-size: cover;
   font-family: Arial, sans-serif;
   position: relative; /* nécessaire pour l'overlay */
@@ -57,3 +57,4 @@ body::before {
   font-size: 20px;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
+
