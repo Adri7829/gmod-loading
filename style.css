@@ -18,7 +18,6 @@ body {
   overflow: hidden;
 }
 
-/* Overlay sombre/rouge */
 body::before {
   content: "";
   position: absolute;
@@ -126,3 +125,4 @@ body::before {
   96% { transform: translateY(-400%); }
   100% { transform: translateY(0); }
 }
+
