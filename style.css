@@ -37,10 +37,22 @@ body::before {
   z-index: -1;
 }
 
-.slideshow:nth-child(5) { background-image: url("https://i.imgur.com/yXaVR9w.jpeg"); animation-delay: 0s; }
-.slideshow:nth-child(6) { background-image: url("https://i.imgur.com/8fjeNwS.jpeg"); animation-delay: 10s; }
-.slideshow:nth-child(7) { background-image: url("https://i.imgur.com/30yHsUB.jpeg"); animation-delay: 20s; }
-.slideshow:nth-child(8) { background-image: url("https://i.imgur.com/iA0xn0B.jpeg"); animation-delay: 30s; }
+.slideshow:nth-of-type(1) { 
+  background-image: url("https://i.imgur.com/yXaVR9w.jpeg"); 
+  animation-delay: 0s; 
+}
+.slideshow:nth-of-type(2) { 
+  background-image: url("https://i.imgur.com/example1.jpeg"); 
+  animation-delay: 10s; 
+}
+.slideshow:nth-of-type(3) { 
+  background-image: url("https://i.imgur.com/example2.jpeg"); 
+  animation-delay: 20s; 
+}
+.slideshow:nth-of-type(4) { 
+  background-image: url("https://i.imgur.com/example3.jpeg"); 
+  animation-delay: 30s; 
+}
 
 @keyframes fadeSlide {
   0%   { opacity: 0; }
