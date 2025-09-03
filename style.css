@@ -14,7 +14,7 @@ body {
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  background: #000; /* noir pur */
+  background: #000;
 }
 
 body::before {
@@ -164,4 +164,5 @@ body::before {
   30%  { opacity: 0; }
   100% { opacity: 0; }
 }
+
 
