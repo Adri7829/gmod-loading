@@ -1,33 +1,166 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Ecran de chargement</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="loading-container">
-    <img src="https://i.imgur.com/aguf7x6.png" alt="Logo" class="logo">
-    <p class="loading-text">La connexion au serveur est en cours</p>
+/* Reset rapide */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <!-- Spinner rouge qui tourne et respire -->
-    <div class="spinner">
-      <div class="spinner-inner"></div>
-    </div>
-  </div>
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  background: #000; /* noir pur */
+}
 
-  <p class="tip-text">
-    <span>💡 Astuce : !asay [raison] pour contacter un staff !</span>
-    <span>💡 Astuce : !boutique pour obtenir le lien de la boutique !</span>
-    <span>💡 Astuce : !discord pour obtenir le lien du serveur discord !</span>
-    <span>💡 Astuce : Respectez les règles du serveur pour éviter les sanctions !</span>
-    <span>💡 Astuce : Visitez notre wiki pour toutes les infos des touches ! </span>
-  </p>
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent; /* plus de gris */
+  z-index: 1;
+}
 
-  <!-- Slideshow CSS -->
-  <div class="slideshow"></div>
-  <div class="slideshow"></div>
-  <div class="slideshow"></div>
-  <div class="slideshow"></div>
-</body>
-</html>
+
+.loading-container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo avec effet respiration rouge */
+.logo {
+  width: 300px;
+  animation: breathe 2s ease-in-out infinite;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(255,0,0,0.7));
+}
+
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 10px rgba(255,0,0,0.7)); 
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: drop-shadow(0 0 20px rgba(255,0,0,1)); 
+  }
+}
+
+.loading-text {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+/* Spinner rouge */
+.spinner {
+  margin: 20px auto 0;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-inner {
+  width: 100%;
+  height: 100%;
+  border: 4px solid rgba(255,0,0,0.3);
+  border-top: 4px solid #ff0000;
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Astuces défilantes */
+.tip-text {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-style: italic;
+  overflow: hidden;
+  height: 1.2em;
+  z-index: 2;        /* au-dessus du slideshow */
+  color: #ffffff;    /* texte blanc */
+}
+
+
+.tip-text span {
+  display: block;
+  height: 1.2em;
+  animation: slideTips 40s linear infinite;
+}
+
+@keyframes slideTips {
+  0% { transform: translateY(0); }
+  16% { transform: translateY(0); }
+  20% { transform: translateY(-100%); }
+  36% { transform: translateY(-100%); }
+  40% { transform: translateY(-200%); }
+  56% { transform: translateY(-200%); }
+  60% { transform: translateY(-300%); }
+  76% { transform: translateY(-300%); }
+  80% { transform: translateY(-400%); }
+  96% { transform: translateY(-400%); }
+  100% { transform: translateY(0); }
+}
+
+/* Slideshow */
+.backgrounds {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.backgrounds .slideshow {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeSlide 40s infinite;
+}
+
+.backgrounds .slideshow:nth-child(1) {
+  background-image: url("https://i.imgur.com/yXaVR9w.jpeg");
+  animation-delay: 0s;
+}
+.backgrounds .slideshow:nth-child(2) {
+  background-image: url("https://i.imgur.com/W3k4naJ.jpeg");
+  animation-delay: 10s;
+}
+.backgrounds .slideshow:nth-child(3) {
+  background-image: url("https://i.imgur.com/SIX4jhW.jpeg");
+  animation-delay: 20s;
+}
+.backgrounds .slideshow:nth-child(4) {
+  background-image: url("https://i.imgur.com/PosRutW.jpeg");
+  animation-delay: 30s;
+}
+
+@keyframes fadeSlide {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0; }
+  100% { opacity: 0; }
+}
