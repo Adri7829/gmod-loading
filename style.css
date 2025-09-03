@@ -11,19 +11,43 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://i.imgur.com/yXaVR9w.jpeg") no-repeat center center;
-  background-size: cover;
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
+  background: #000; /* fallback noir */
 }
 
+/* Overlay sombre au-dessus du slideshow */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(14, 13, 13, 0.4);
   z-index: 0;
+}
+
+/* Slideshow fond */
+.slideshow {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeSlide 40s infinite;
+  z-index: -1;
+}
+
+.slideshow:nth-child(5) { background-image: url("https://i.imgur.com/yXaVR9w.jpeg"); animation-delay: 0s; }
+.slideshow:nth-child(6) { background-image: url("https://i.imgur.com/8fjeNwS.jpeg"); animation-delay: 10s; }
+.slideshow:nth-child(7) { background-image: url("https://i.imgur.com/30yHsUB.jpeg"); animation-delay: 20s; }
+.slideshow:nth-child(8) { background-image: url("https://i.imgur.com/iA0xn0B.jpeg"); animation-delay: 30s; }
+
+@keyframes fadeSlide {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 .loading-container {
@@ -41,6 +65,7 @@ body::before {
 /* Logo avec effet respiration rouge */
 .logo {
   width: 300px;
+  max-width: 90vw;
   animation: breathe 2s ease-in-out infinite;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 10px rgba(255,0,0,0.7));
@@ -57,15 +82,14 @@ body::before {
   }
 }
 
-/* Texte principal sans glow */
+/* Texte principal */
 .loading-text {
   color: #ffffff;
   font-size: 20px;
-  text-shadow: none; /* plus de glow */
-  animation: none;    /* plus d'animation */
+  text-shadow: none;
 }
 
-/* Spinner rouge qui tourne et respire */
+/* Spinner rouge */
 .spinner {
   margin: 20px auto 0;
   width: 40px;
@@ -91,7 +115,7 @@ body::before {
   50% { transform: scale(1.1); }
 }
 
-/* Astuces défilantes en bas sans glow */
+/* Astuces défilantes */
 .tip-text {
   position: absolute;
   bottom: 20px;
@@ -100,7 +124,7 @@ body::before {
   color: #ffffff;
   font-size: 16px;
   font-style: italic;
-  text-shadow: none;  /* plus de glow */
+  text-shadow: none;
   overflow: hidden;
   height: 1.2em;
   z-index: 1;
@@ -109,7 +133,7 @@ body::before {
 .tip-text span {
   display: block;
   height: 1.2em;
-  animation: slideTips 40s linear infinite; /* 5 astuces x 8s = 40s */
+  animation: slideTips 40s linear infinite;
 }
 
 @keyframes slideTips {
@@ -125,4 +149,3 @@ body::before {
   96% { transform: translateY(-400%); }
   100% { transform: translateY(0); }
 }
-
