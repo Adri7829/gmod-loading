@@ -1,4 +1,4 @@
-/* Reset rapide */
+
 * {
   margin: 0;
   padding: 0;
@@ -164,3 +164,4 @@ body::before {
   30%  { opacity: 0; }
   100% { opacity: 0; }
 }
+
