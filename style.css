@@ -1,9 +1,11 @@
+/* Reset de base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Corps de la page */
 body {
   width: 100vw;
   height: 100vh;
@@ -13,18 +15,11 @@ body {
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: url("https://i.imgur.com/SIX4jhW.jpeg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: transparent; /* plus de gris */
-  z-index: 1;
-}
-
-
+/* Conteneur principal */
 .loading-container {
   text-align: center;
   position: relative;
@@ -32,16 +27,19 @@ body::before {
   animation: fadeIn 1s ease forwards;
 }
 
+/* Animation fadeIn pour le conteneur */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Logo qui respire */
 .logo {
   width: 300px;
   animation: breathe 2s ease-in-out infinite;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 10px rgba(255,0,0,0.7));
+  will-change: transform, filter;
 }
 
 @keyframes breathe {
@@ -55,6 +53,7 @@ body::before {
   }
 }
 
+/* Texte principal */
 .loading-text {
   color: #ffffff;
   font-size: 20px;
@@ -75,6 +74,7 @@ body::before {
   border-top: 4px solid #ff0000;
   border-radius: 50%;
   animation: pulse 1.8s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes spin {
@@ -96,69 +96,27 @@ body::before {
   font-style: italic;
   overflow: hidden;
   height: 1.2em;
-  z-index: 2;        /* au-dessus du slideshow */
+  z-index: 2;        /* au-dessus du fond */
   color: #ffffff;    /* texte blanc */
 }
-
 
 .tip-text span {
   display: block;
   height: 1.2em;
-  animation: slideTips 40s linear infinite;
+  animation: slideTips 20s linear infinite;
+  will-change: transform;
 }
 
 @keyframes slideTips {
-  0% { transform: translateY(0); }
-  16% { transform: translateY(0); }
-  20% { transform: translateY(-100%); }
-  36% { transform: translateY(-100%); }
-  40% { transform: translateY(-200%); }
-  56% { transform: translateY(-200%); }
-  60% { transform: translateY(-300%); }
-  76% { transform: translateY(-300%); }
-  80% { transform: translateY(-400%); }
-  96% { transform: translateY(-400%); }
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-100%); }
+  40%  { transform: translateY(-200%); }
+  60%  { transform: translateY(-300%); }
+  80%  { transform: translateY(-400%); }
   100% { transform: translateY(0); }
 }
 
-/* Slideshow */
+/* Supprimer le slideshow inutilisé */
 .backgrounds {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.backgrounds .slideshow {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  animation: fadeSlide 40s infinite;
-}
-
-.backgrounds .slideshow:nth-child(1) {
-  background-image: url("https://i.imgur.com/yXaVR9w.jpeg");
-  animation-delay: 0s;
-}
-.backgrounds .slideshow:nth-child(2) {
-  background-image: url("https://i.imgur.com/W3k4naJ.jpeg");
-  animation-delay: 10s;
-}
-.backgrounds .slideshow:nth-child(3) {
-  background-image: url("https://i.imgur.com/SIX4jhW.jpeg");
-  animation-delay: 20s;
-}
-.backgrounds .slideshow:nth-child(4) {
-  background-image: url("https://i.imgur.com/PosRutW.jpeg");
-  animation-delay: 30s;
-}
-
-@keyframes fadeSlide {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  25%  { opacity: 1; }
-  30%  { opacity: 0; }
-  100% { opacity: 0; }
+  display: none;
 }
