@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Ecran de chargement</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Ecran de chargement</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="loading-container">
-    <img src="https://i.imgur.com/bbExQXr.png" alt="Logo" class="logo">
-    <p class="loading-text">La connexion au serveur est en cours</p>
+    <div class="loading-container">
+        <img src="https://i.imgur.com/bbExQXr.png" alt="Logo" class="logo">
+        <p class="loading-text">La connexion au serveur est en cours</p>
 
-    <div class="spinner">
-      <div class="spinner-inner"></div>
+        <div class="spinner">
+            <div class="spinner-inner"></div>
+        </div>
     </div>
-  </div>
 
-  <p class="tip-text">
+<!-- Remplacer l'ancien bloc d'astuces par ce bloc -->
+<div class="tip-text" role="status" aria-live="polite">
+  <div class="tip-slides">
     <span>💡 Astuce : !asay [raison] pour contacter un staff !</span>
     <span>💡 Astuce : !boutique pour obtenir le lien de la boutique !</span>
     <span>💡 Astuce : !discord pour obtenir le lien du serveur discord !</span>
     <span>💡 Astuce : Respectez les règles du serveur pour éviter les sanctions !</span>
     <span>💡 Astuce : Visitez notre wiki pour toutes les infos des touches !</span>
-  </p>
-
-  <div class="backgrounds">
-    <div class="slideshow"></div>
-    <div class="slideshow"></div>
-    <div class="slideshow"></div>
-    <div class="slideshow"></div>
   </div>
-</body>
-</html>
+</div>
 
+
+    <div class="backgrounds">
+        <img src="https://i.imgur.com/SIX4jhW.jpeg" class="bg-image" alt="Background 1">
+        <img src="https://i.imgur.com/qvpHBxY.jpeg" class="bg-image" alt="Background 2">
+        <img src="https://i.imgur.com/h0wEp7I.jpeg" class="bg-image" alt="Background 3">
+        <img src="https://i.imgur.com/6EjUBBy.jpeg" class="bg-image" alt="Background 4">
+    </div>
+    </body>
+</html>
