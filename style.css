@@ -5,6 +5,15 @@
   box-sizing: border-box;
 }
 
+/* ==================================== */
+/* 1. STYLES GÉNÉRAUX ET LAYOUT */
+/* ==================================== */
+
+/* Assurer un fond sombre dès le niveau HTML */
+html, body {
+  background-color: #000000; 
+}
+
 /* Corps de la page */
 body {
   width: 100vw;
@@ -15,15 +24,13 @@ body {
   font-family: Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  background: url("https://i.imgur.com/SIX4jhW.jpeg") no-repeat center center fixed;
-  background-size: cover;
 }
 
 /* Conteneur principal */
 .loading-container {
   text-align: center;
   position: relative;
-  z-index: 2;
+  z-index: 20; 
   animation: fadeIn 1s ease forwards;
 }
 
@@ -86,37 +93,118 @@ body {
   50% { transform: scale(1.1); }
 }
 
-/* Astuces défilantes */
+/* --- Astuces défilantes (remplacer uniquement ce bloc) --- */
 .tip-text {
   position: absolute;
   bottom: 20px;
+  left: 0;
   width: 100%;
   text-align: center;
   font-size: 16px;
   font-style: italic;
+  color: #ffffff;
+  z-index: 20;
   overflow: hidden;
-  height: 1.2em;
-  z-index: 2;        /* au-dessus du fond */
-  color: #ffffff;    /* texte blanc */
+  height: 1.2em; /* hauteur visible = hauteur d'une astuce */
+  pointer-events: none; /* ne bloque pas les interactions sous-jacentes */
 }
 
-.tip-text span {
-  display: block;
-  height: 1.2em;
+.tip-text .tip-slides {
+  display: inline-block;
+  transform: translateY(0);
   animation: slideTips 20s linear infinite;
   will-change: transform;
+  pointer-events: auto; /* permet la sélection si besoin */
 }
 
+/* Mettre en pause l'animation au survol (pratique pour lire longuement) */
+.tip-text .tip-slides:hover {
+  animation-play-state: paused;
+}
+
+.tip-text .tip-slides span {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+/* 5 astuces → 20s total (4s par astuce). On translate par pas d'1.2em */
 @keyframes slideTips {
   0%   { transform: translateY(0); }
-  20%  { transform: translateY(-100%); }
-  40%  { transform: translateY(-200%); }
-  60%  { transform: translateY(-300%); }
-  80%  { transform: translateY(-400%); }
+  20%  { transform: translateY(-1.2em); }
+  40%  { transform: translateY(-2.4em); }
+  60%  { transform: translateY(-3.6em); }
+  80%  { transform: translateY(-4.8em); }
   100% { transform: translateY(0); }
 }
 
-/* Supprimer le slideshow inutilisé */
+/* ==================================== */
+/* 2. DIAPORAMA CSS SANS JS - 15 SECONDES */
+/* ==================================== */
+
+/* Variables pour le diaporama (4 images, 15s/image) */
+:root {
+    --nombre-images: 4; 
+    --temps-de-fondu: 1s;     /* Durée de la transition (fade) */
+    --temps-affichage: 14s;   /* Image fixe pendant 14s */
+    
+    /* VALEURS FIXES UTILISÉES POUR LA ROBUSTESSE */
+    --temps-par-image: 15s;   /* 14s + 1s = 15s */
+    --duree-totale: 60s;      /* 4 images * 15s = 60s */
+}
+
+/* Conteneur des images de fond */
 .backgrounds {
-  display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Styles pour chaque image */
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; 
+    
+    animation-name: simpleFade;
+    /* Durée totale du cycle (60s) */
+    animation-duration: 60s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both; 
+}
+
+/* Décalage de l'animation (tous les 15s) */
+.bg-image:nth-child(1) { animation-delay: 0s; }
+.bg-image:nth-child(2) { animation-delay: 15s; } 
+.bg-image:nth-child(3) { animation-delay: 30s; } 
+.bg-image:nth-child(4) { animation-delay: 45s; } 
+
+
+/* Définition de l'animation de fondu SIMPLE (4 images, 60s total) */
+@keyframes simpleFade {
+    /* Étape 1: Départ et Fondu entrant (0s à 1s) */
+    0% { opacity: 0; }
+    1.6% { opacity: 1; } /* 1s sur 60s total ≈ 1.6% */
+    
+    /* Étape 2: Maintien (jusqu'à 14s) */
+    23.3% { opacity: 1; } /* 14s sur 60s total ≈ 23.3% */
+    
+    /* Étape 3: Fin du cycle (15s) et Fondu sortant */
+    25% { opacity: 0; } /* 15s sur 60s total = 25% */
+    
+    /* Étape 4: Reste caché (jusqu'à la fin de la boucle) */
+    100% { opacity: 0; }
 }
