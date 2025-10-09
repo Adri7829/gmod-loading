@@ -45,18 +45,18 @@ body {
   width: 300px;
   animation: breathe 2s ease-in-out infinite;
   margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px rgba(255,0,0,0.7));
+  filter: drop-shadow(0 0 10px rgba(255, 94, 0, 0.7));
   will-change: transform, filter;
 }
 
 @keyframes breathe {
   0%, 100% { 
     transform: scale(1); 
-    filter: drop-shadow(0 0 10px rgba(255,0,0,0.7)); 
+    filter: drop-shadow(0 0 10px rgba(255, 94, 0, 0.7)); 
   }
   50% { 
     transform: scale(1.1); 
-    filter: drop-shadow(0 0 20px rgba(255,0,0,1)); 
+    filter: drop-shadow(0 0 20px rgba(255, 94, 0, 0.7)); 
   }
 }
 
@@ -78,7 +78,7 @@ body {
   width: 100%;
   height: 100%;
   border: 4px solid rgba(255,0,0,0.3);
-  border-top: 4px solid #ff0000;
+  border-top: 4px solid rgba(255, 94, 0, 0.7);
   border-radius: 50%;
   animation: pulse 1.8s ease-in-out infinite;
   will-change: transform;
@@ -208,3 +208,4 @@ body {
     /* Étape 4: Reste caché (jusqu'à la fin de la boucle) */
     100% { opacity: 0; }
 }
+
