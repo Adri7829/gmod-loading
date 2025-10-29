@@ -1,4 +1,4 @@
-/* Reset minimaliste */
+
 *,
 *::before,
 *::after {
@@ -658,3 +658,4 @@ img {
     font-size: 0.9rem;
   }
 }
+
