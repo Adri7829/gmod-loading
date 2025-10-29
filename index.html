@@ -2,37 +2,88 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ecran de chargement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&Eacute;cran de chargement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="loading-container">
-        <img src="https://i.imgur.com/ymQCdlx.png" alt="Logo" class="logo">
-        <p class="loading-text">La connexion au serveur est en cours</p>
+    <div class="backgrounds" aria-hidden="true">
+        <img src="https://i.imgur.com/SIX4jhW.jpeg" class="bg-image" alt="">
+        <img src="https://i.imgur.com/qvpHBxY.jpeg" class="bg-image" alt="">
+        <img src="https://i.imgur.com/h0wEp7I.jpeg" class="bg-image" alt="">
+        <img src="https://i.imgur.com/6EjUBBy.jpeg" class="bg-image" alt="">
+    </div>
 
-        <div class="spinner">
-            <div class="spinner-inner"></div>
+    <div class="color-overlay" aria-hidden="true"></div>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="aura aura-one" aria-hidden="true"></div>
+    <div class="aura aura-two" aria-hidden="true"></div>
+    <div class="aura aura-three" aria-hidden="true"></div>
+
+    <main class="loading-shell" role="main">
+        <header class="brand">
+            <img src="https://i.imgur.com/ymQCdlx.png" alt="Logo du serveur" class="logo">
+            <div class="brand-text">
+                <h1 class="server-name">CHRONOSRP</h1>
+                <p class="tagline">Une exp&eacute;rience immersive vous attend, installez-vous confortablement.</p>
+            </div>
+        </header>
+
+        <section class="status">
+            <div class="pulse-indicator" aria-hidden="true"></div>
+            <p class="loading-text">Connexion au serveur en cours...</p>
+            <div class="progress-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuetext="Chargement dynamique">
+                <span class="progress-bar"></span>
+                <span class="progress-glow"></span>
+            </div>
+            <ul class="progress-stages">
+                <li>Authentification</li>
+                <li>Modules</li>
+                <li>Textures</li>
+                <li>Entit&eacute;s</li>
+                <li>Finalisation</li>
+            </ul>
+        </section>
+
+        <section class="info-grid" aria-label="Informations essentielles">
+            <article class="info-card">
+                <h2>Briefing rapide</h2>
+                <p>Installer la coll&eacute;ction workshop, lisez le r&egrave;glement, et lisez les annonces pour rester &agrave; jour.</p>
+            </article>
+            <article class="info-card">
+                <h2>Commandes utiles</h2>
+                <ul>
+                    <li><span class="command">!discord</span> &rarr; Rejoindre la communaut&eacute;</li>
+                    <li><span class="command">!rules</span> &rarr; Rappel des r&egrave;gles</li>
+                    <li><span class="command">!boutique</span> &rarr; Soutenir le serveur</li>
+                </ul>
+            </article>
+            <article class="info-card">
+                <h2>Conseil du staff</h2>
+                <p>Restez roleplay, soyez fair-play et n&apos;h&eacute;sitez pas &agrave; contacter le staff via <span class="command">!asay</span>.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="tips" role="status" aria-live="polite">
+        <div class="tips-label">Astuce</div>
+        <div class="tips-track">
+            <div class="tips-slider">
+                <span>Utilisez un casque pour profiter de l&apos;ambiance sonore.</span>
+                <span>Optimisez vos FPS via les options avanc&eacute;es du menu.</span>
+                <span>Respectez les r&egrave;gles pour &eacute;viter les sanctions.</span>
+                <span>Pensez &agrave; sauvegarder vos favoris Steam Workshop.</span>
+                <span>Rejoignez notre Discord pour suivre les &eacute;v&eacute;nements.</span>
+                <span>Utilisez un casque pour profiter de l&apos;ambiance sonore.</span>
+                <span>Optimisez vos FPS via les options avanc&eacute;es du menu.</span>
+                <span>Respectez les r&egrave;gles pour &eacute;viter les sanctions.</span>
+                <span>Pensez &agrave; sauvegarder vos favoris Steam Workshop.</span>
+                <span>Rejoignez notre Discord pour suivre les &eacute;v&eacute;nements.</span>
+            </div>
         </div>
-    </div>
-
-<!-- Remplacer l'ancien bloc d'astuces par ce bloc -->
-<div class="tip-text" role="status" aria-live="polite">
-  <div class="tip-slides">
-    <span>💡 Astuce : !asay [raison] pour contacter un staff !</span>
-    <span>💡 Astuce : !boutique pour obtenir le lien de la boutique !</span>
-    <span>💡 Astuce : !discord pour obtenir le lien du serveur discord !</span>
-    <span>💡 Astuce : Respectez les règles du serveur pour éviter les sanctions !</span>
-    <span>💡 Astuce : Visitez notre wiki pour toutes les infos des touches !</span>
-  </div>
-</div>
-
-
-    <div class="backgrounds">
-        <img src="https://i.imgur.com/SIX4jhW.jpeg" class="bg-image" alt="Background 1">
-        <img src="https://i.imgur.com/qvpHBxY.jpeg" class="bg-image" alt="Background 2">
-        <img src="https://i.imgur.com/h0wEp7I.jpeg" class="bg-image" alt="Background 3">
-        <img src="https://i.imgur.com/6EjUBBy.jpeg" class="bg-image" alt="Background 4">
-    </div>
-    </body>
+    </footer>
+</body>
 </html>
-
